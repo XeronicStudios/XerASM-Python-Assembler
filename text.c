@@ -1,12 +1,17 @@
 #include <stdio.h>
 
 int main() {
-    int a = 0;
-    int b = 5;
-    __asm__(
-        "movl $4, %0" 
-        : "=r" (a)
+    int a = 5, b = 6, sum;
+
+    // Extended inline assembly (GCC/Clang)
+    asm volatile (
+        "addl %[val_b], %[val_a]"   // sum = a + b
+        : [val_a] "+r" (a)          // output: a is updated in-place
+        : [val_b] "r" (b)           // input: b is read-only
     );
-    printf("Test %i", a);
+
+    sum = a; // a now contains the sum
+    printf("Sum = %d\n", sum);
+
     return 0;
 }
