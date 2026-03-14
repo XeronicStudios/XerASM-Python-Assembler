@@ -1,3 +1,6 @@
+##Imported Modules
+import x86CFunctionsModule.x86CFunctions as X
+
 ##Variables, Dictionaries and Lists
 Sections = []
 Operators = ["LDA", "STR", "ADD", "SUB", "MUL", "DIV", "MOV", "CMP", "JMP", "JEQ", "JNE", "JGT", "JLT", "AND", "ORR", "EOR", "NOT"]
