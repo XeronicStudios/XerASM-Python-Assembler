@@ -6,16 +6,51 @@ int testcall(int Val) {
     return y;
 };
 
-int LDR(int Val1, int Val2) {
-    int Result;
-    asm volatile (
-        "lea 100(%[reg_a]), %[reg_b]"
-        : [reg_a] "+r" (Val1)
-        : [reg_b] "r" (Val2)
+int LDR(int Destination, int Source) {
+    __asm__ volatile (
+        "movl %[dt], %[src]" 
+        : [dt] "=r" (Destination) 
+        : [src] "r" (Source)  
     );
-    printf("Result: %i", Val2);
+    printf("Return: %i\n", Destination);
     return 0;
 };
+
+int STR(int Destination, int Source) {
+    __asm__ volatile (
+        "movl %[src], %[dt]" 
+        : [dt] "=r" (Destination) 
+        : [src] "r" (Source)  
+    );
+    printf("Return: %i\n", Destination);
+    return 0;
+};
+
+int ADD(int Destination, int Source) {
+    asm volatile (
+        "add %[src], %[dt]"
+        : [dt] "+r" (Destination)
+        : [src] "r" (Source)
+    );
+    printf("Return: %i\n", Destination);
+    return 0;
+};
+
+int SUB(int Destination, int Source) {
+    asm volatile (
+        "sub %[src], %[dt]"
+        : [dt] "+r" (Destination)
+        : [src] "r" (Source)
+    );
+    printf("Return: %i\n", Destination);
+    return 0;
+};
+
+int main() {
+    STR(1, 2);
+    LDR(3, 1);
+    return 0;
+}
 
 //int main() {
 //    int a = 5, b = 5, sum;

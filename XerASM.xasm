@@ -4,5 +4,5 @@
     ADD R0, R1
 
 .Section2
-    STR R1 1
-    LDA R0, 1
+    STR R1, 1
+    LDR R0, 1
