@@ -1,13 +1,8 @@
 #include <stdio.h>
-
-int testcall(int Val) {
-    int x = Val;
-    int y = x + 1;
-    return y;
-};
+#include <stdlib.h>
 
 int LDR(int Destination, int Source) {
-    __asm__ volatile (
+    asm volatile (
         "movl %[dt], %[src]" 
         : [dt] "=r" (Destination) 
         : [src] "r" (Source)  
@@ -17,7 +12,7 @@ int LDR(int Destination, int Source) {
 };
 
 int STR(int Destination, int Source) {
-    __asm__ volatile (
+    asm volatile (
         "movl %[src], %[dt]" 
         : [dt] "=r" (Destination) 
         : [src] "r" (Source)  
@@ -42,13 +37,31 @@ int SUB(int Destination, int Source) {
         : [dt] "+r" (Destination)
         : [src] "r" (Source)
     );
-    printf("Return: %i\n", Destination);
+    printf("Add: %i\n", Destination);
     return 0;
 };
 
+//int CMP(int Destination, int Source) {
+//    asm volatile (
+//        ""
+//    );
+//};
+
+int AND(int Destination, int Source) {
+    for (int i = 0; i < 5; i++) {
+        printf("Iteration\n");
+    };
+    asm volatile (
+    "add %[dst], %[src]"
+    : [dst] "=r" (Destination) 
+    : [src] "r" (Source));
+    printf("Return: %i\n", Destination);
+    return 0;
+}
+
 int main() {
-    STR(1, 2);
-    LDR(3, 1);
+    AND(0010, 1110);
+    exit;
     return 0;
 }
 

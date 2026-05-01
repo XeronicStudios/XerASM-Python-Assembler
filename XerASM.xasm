@@ -6,3 +6,13 @@
 .Section2
     STR R1, 1
     LDR R0, 1
+
+.Section3
+    MOV R0, #1
+    MOV R1, #1
+    ADD R0, R1
+    STR R1, 1
+    LDR R0, 1
+
+.Section4
+    MOV R0, #7

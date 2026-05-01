@@ -1,0 +1,45 @@
+LDA RA, <Memory> 
+Load the Value from given memory into Register
+STR RA, <Memory> 
+Store the Value in Register to given memory
+ADD RA, RB 
+Add the values in registers and store in the Accumulator
+SUB RA, RB 
+Subtract the values in registers and store in the Accumulator
+MUL RA, RB 
+DIV RA, RB 
+MOV RA, <Opr2> 
+Copy the value from Opr2 (Register, memory, ROM) into Register
+CMP RA, RB 
+Compare the values between 2 registers
+JMP <Line> 
+Jump to the specified ROM address 
+JEQ <Line> 
+Jump to the specified ROM address if previous CMP is Equal
+JNE <Line> 
+Jump to the specified ROM address if previous CMP is Not Equal
+JGT <Line> 
+Jump to the specified ROM address if previous CMP is Greater Than
+JLT <Line> 
+Jump to the specified ROM address if previous CMP is Less Than
+AND RA, RB 
+Perform a bitwise AND operation
+ORR RA, RB 
+Perform a bitwise OR operation
+EOR RA, RB 
+Perform a bitwise Exclusive Or operation
+NOT RA 
+Perform a bitwise NOT operation
+LSL RA, RB 
+Perform a bitwise Logic Shift Left by RB bits
+LSR RA, RB 
+Perform a bitwise Logic Shift Right by RB bits
+
+ACC 
+R0 
+R1 
+R2 
+R3 
+R4 
+R5 
+R6 
